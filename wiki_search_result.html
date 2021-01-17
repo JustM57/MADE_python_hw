@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+{% block title %}Search result for query: {{ query }}{% endblock %}
+
+{% block body %}
+<table>
+    <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Snippet</th>
+        <th>Link</th>
+    </tr>
+    {% if documents %}
+    {% for document in documents %}
+    <tr>
+        <td> {{ loop.index }}</td>
+        <td> {{ document[0] }}</td>
+        <td> {{ document[2] }}</td>
+        <td><a href="{{ wikipedia_base_url }}{{ document[1] }}">{{ document[1] }}</a></td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+</table>
+{% endblock body %}
